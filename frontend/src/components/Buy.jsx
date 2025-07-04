@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { BACKEND_URL } from "../utils/utils";
 function Buy() {
   const { courseId } = useParams();
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ function Buy() {
     const fetchCourse = async () => {
       try {
         const res = await axios.post(
-          `http://localhost:4001/api/v1/course/buy/${courseId}`,
+          `${BACKEND_URL}/course/buy/${courseId}`,
           {},
           {
             headers: {
@@ -67,7 +67,7 @@ function Buy() {
 
     try {
       const orderResponse = await axios.post(
-        `http://localhost:4001/api/v1/course/buy/${courseId}`,
+        `${BACKEND_URL}/course/buy/${courseId}`,
         {},
         {
           headers: {
@@ -97,7 +97,7 @@ function Buy() {
 
           try {
             await axios.post(
-              `http://localhost:4001/api/v1/course/verify-payment`,
+              `${BACKEND_URL}/course/verify-payment`,
               paymentData,
               {
                 headers: {

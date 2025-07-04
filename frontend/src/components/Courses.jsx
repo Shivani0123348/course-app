@@ -36,7 +36,7 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:4001/api/v1/course/courses", {
+        const response = await axios.get(`${BACKEND_URL}/course/courses`, {
           withCredentials: true,
         });
         console.log(response.data.courses);
@@ -52,7 +52,7 @@ function Courses() {
   // Logout
   const handleLogout = async () => {
     try {
-      const response = await axios.get("http://localhost:4001/api/v1/user/logout", {
+      const response = await axios.get(`${BACKEND_URL}/user/logout`, {
         withCredentials: true,
       });
       toast.success(response.data.message);
@@ -140,7 +140,7 @@ function Courses() {
                 placeholder="Type here to search..."
                 className="border border-gray-300 rounded-l-full px-4 py-2 h-10 focus:outline-none hidden"
               />
-              <button className="h-10 border border-gray-300 rounded-r-full px-4 flex items-center hidden justify-center">
+              <button className="hidden h-10 border border-gray-300 rounded-r-full px-4  items-center  justify-center">
                 <FiSearch className="text-xl text-gray-600 hidden" />
               </button>
             </div>

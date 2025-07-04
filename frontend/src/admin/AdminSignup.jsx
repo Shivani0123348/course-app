@@ -19,7 +19,7 @@ function AdminSignup() {
 
     try {
       const response = await axios.post(
-        "http://localhost:4001/api/v1/admin/signup",
+        `${BACKEND_URL}admin/signup`,
         {
           firstName,
           lastName,
