@@ -57,9 +57,9 @@ export const login = async (req,resp)=>{
             const cookieOptions={
                 expires: new Date(Date.now() +24*60*60*1000), //1hour
                 httpOnly: true, 
-                secure: true //true for http only
+                secure: true, //true for http only
                  sameSite: "None", //CSRF attack
-                  maxAge: 24 * 60 * 60 * 1000
+               
             }
              resp.cookie("jwt",token,cookieOptions)
              resp.status(201).json({message:"Login successfully", user,token})
