@@ -10,21 +10,19 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 const app=express();
 dotenv.config();
-
-//middleware
-app.use(express.json());
-app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://course-app-five-gold.vercel.app", // your exact Vercel URL
+    origin: true, // 🔥 allow request origin dynamically
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
 // Allow all preflight OPTIONS
 app.options("*", cors());
+//middleware
+app.use(express.json());
+app.use(cookieParser());
+
 app.use(
     fileUpload
         ({
