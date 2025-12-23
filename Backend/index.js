@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: true, // 🔥 allow request origin dynamically
-    credentials: true,
+    credentials: true
   })
 );
 
