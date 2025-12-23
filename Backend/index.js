@@ -10,6 +10,10 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 const app=express();
 dotenv.config();
+
+//middleware
+app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     origin: true, // 🔥 allow request origin dynamically
@@ -19,10 +23,6 @@ app.use(
 
 // Allow all preflight OPTIONS
 app.options("*", cors());
-//middleware
-app.use(express.json());
-app.use(cookieParser());
-
 app.use(
     fileUpload
         ({
