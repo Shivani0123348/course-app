@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: true, // 🔥 allow request origin dynamically
+    origin: "https://course-app-five-gold.vercel.app", // 🔥 allow request origin dynamically
     credentials: true
   })
 );
