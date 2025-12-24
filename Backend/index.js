@@ -14,14 +14,22 @@ dotenv.config();
 //middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(
-    {
-      origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],  
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://course-app-git-main-shivani-bajpais-projects.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
     }
-))
+  },
+  credentials: true
+}));
+
 app.use(
     fileUpload
         ({
