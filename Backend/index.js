@@ -14,15 +14,14 @@ dotenv.config();
 //middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "https://course-app-five-gold.vercel.app", // 🔥 allow request origin dynamically
-    credentials: true
-  })
-);
-
-// Allow all preflight OPTIONS
-app.options("*", cors());
+app.use(cors(
+    {
+      origin: process.env.FRONTEND_URL,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],  
+    }
+))
 app.use(
     fileUpload
         ({
